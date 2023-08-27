@@ -43,3 +43,7 @@ async def get_model(model_name: ModelName):
         return {"model_name": model_name, "message": "LeCNN all the images"}
 
     return {"model_name": model_name, "message": "Have some residuals"}
+    
+# @app.post("/items")
+# async def create_item(item: Item):
+#     return item
