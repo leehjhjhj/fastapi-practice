@@ -18,3 +18,7 @@
 - database 연결 및 `SQLALCHEMY`의 모델 및 base에 관련하여 공부
 - pydantic을 통한 스키마(dto) 이해.
 - 기타 파이썬의 Union과 fastapi의 Depends 조금 이해
+
+## 0829
+- DTO(schema)를 통한 response에 대한 이해. (response model 활용)
+- response model을 사용하기 위해서는 return 할 때 객체가 필요하다.
