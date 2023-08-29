@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 import controller.question_controller as question_controller
-from database import Base, engine
-
-app = FastAPI()
 
 app = FastAPI()
 

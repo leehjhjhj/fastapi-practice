@@ -1,15 +1,14 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from database import get_db
 from domain.question import Question
 from sqlalchemy.orm import Session
 from DTO.question_request_dto import QuestionRequestDto
 from DTO.question_response_dto import QuestionResponseDto
-
 from database import Base, engine
 
 router = APIRouter(
-    prefix="/api/question",
+    prefix="/question",
 )
 
 @router.get("/", status_code=200)
@@ -25,6 +24,8 @@ def question_list(db: Session = Depends(get_db)):
 def create_question(question: QuestionRequestDto, db: Session = Depends(get_db)):
     new_question = Question(**question.dict())
     db.add(new_question)
-    db.flush()
-    db.commit()
-
+    try:
+        db.commit()
+        return new_question
+    except Exception as e:
+       raise HTTPException(status_code=400, detail=f"잘못된 접근입니다: {e}")
